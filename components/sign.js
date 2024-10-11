@@ -28,7 +28,7 @@ export default function sign(){
                     onChange={handleIdChange}
                     style={{ width: "250px" , marginBottom:"20px"}}
                     InputProps={{
-                        style: { height: "55px" } 
+                        style: { height: "54px" } 
                     }}
                 ></TextField>
                 {showPwField && (
@@ -41,7 +41,7 @@ export default function sign(){
                             helperText="8-16자 이내 영문, 숫자, 특수문자 사용가능"
                             style={{ width: "250px" }}
                             InputProps={{
-                                style: { height: "55px" } 
+                                style: { height: "54px" } 
                             }}
                         ></TextField>
                     </Fade>
