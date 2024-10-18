@@ -22,3 +22,9 @@
 .head {
     margin-bottom: 15px;
 }
+
+.highlight {
+    color: gold;
+    font-weight: bold;
+    transition: color 0.5s ease, font-weight 0.5s ease;
+}
