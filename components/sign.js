@@ -11,7 +11,6 @@ export default function sign(){
     const [helpText, setHelpText] = useState("6-12자 이내 영문, 숫자 사용");
     const [pwCheck, setPwCheck] = useState("8-16자 이내 영문, 숫자, 특수문자 사용가능");
 
-
     const [falseV, setfalseV] = useState(true);  //에러인지 아닌지
     const [idError, setidError] = useState(false);
     const [pwCheckHelpText, setpwCheckHelpText] = useState("");
@@ -39,9 +38,6 @@ export default function sign(){
             setfalseV(true);
         }
 
-        // if (value.length > 5){setShowPwField(true);}
-        // else{ setShowPwField(false); }
-
     };
 
     const handlePwChange = (event) => {
@@ -49,7 +45,6 @@ export default function sign(){
         setpwValue(value);
         const regexPw = /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
 
-        pwCheck
         if (regexPw.test(value)){
             setshowPwCheckField(true);
             setpwError(false);
@@ -84,7 +79,6 @@ export default function sign(){
                     error = {!falseV}
                     id="id-required"
                     label="ID"
-                    // placeholder="ID를 적으세요"
                     placeholder="6-12자 이내 영문, 숫자"
                     helperText={helpText}
                     value={idValue}
@@ -127,6 +121,10 @@ export default function sign(){
                         ></TextField>
                     </Fade>
                 )}
+                <div style={{ marginTop: "20px" }}>
+                    <p>학번: 2514</p>
+                    <p>이름: 장병준</p>
+                </div>
             </div>
         </>
     )
