@@ -1,7 +1,7 @@
 .wrapper {
     width: 50vh;
     height: 50vh;
-    background-color: rgba(255, 255, 255, 0.8); /* 백그라운드만 0.8 투명도 */
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 7px;
     box-shadow: 0 12px 24px rgba(0,0,0,0.2), 0 8px 12px rgba(0,0,0,0.1);
     transition: all 0.5s cubic-bezier(.25,.8,.25,1);
@@ -12,9 +12,10 @@
     color: rgba(0,0,0,0.8);
 }
 
-.wrapper:hover{
+.wrapper:hover,
+.wrapper:focus-within {
     box-shadow: 0 30px 45px rgba(0,0,0,0.25), 0 15px 20px rgba(0,0,0,0.15);
-    background-color: rgba(255, 255, 255, 0.95); /* hover 시 백그라운드만 0.9 */
+    background-color: rgba(255, 255, 255, 0.95);
     color: rgba(0,0,0,1);
 }
 
