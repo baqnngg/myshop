@@ -1,10 +1,10 @@
-import Sign from "@/components/sign"
+import Signup from "@/components/signup"
 import { Container } from "@mui/material"
 
-export default function signin(){
+export default function signup(){
     return(
         <div className="modern-gradient">
-            <Sign></Sign>
+            <Signup></Signup>
         </div>
     )
 }

@@ -1,17 +1,19 @@
-import { TextField, Fade } from "@mui/material";
-import styles from "./sign.module.css";
+import { TextField, Fade, Button } from "@mui/material";
+import styles from "./signup.module.css";
 import { useState } from "react";
 
-export default function Sign() {
+export default function Signup() {
     const [idValue, setIdValue] = useState("");
     const [pwValue, setpwValue] = useState("");
+    const [userNameValue, setuserNameValue] = useState("");
     const [showPwField, setShowPwField] = useState(false);
     const [showPwCheckField, setshowPwCheckField] = useState(false);
     const [pwCheckValue, setPwCheckValue] = useState("");
+
     const [helpText, setHelpText] = useState("6-12자 이내 영문, 숫자 사용");
     const [pwCheck, setPwCheck] = useState("8-16자 이내 영문, 숫자, 특수문자 사용가능");
 
-    const [falseV, setfalseV] = useState(true); // 에러 여부
+    const [falseV, setfalseV] = useState(false); // 에러 여부
     const [pwCheckHelpText, setpwCheckHelpText] = useState("");
     const [pwHelpText, setpwHelpText] = useState("");
     const [pwError, setpwError] = useState(false);
@@ -28,15 +30,15 @@ export default function Sign() {
         if (regexId.test(value)) {
             setHelpText("");
             setShowPwField(true);
-            setfalseV(true);
+            setfalseV(false);
         } else if (value.length > 5 && !regexId.test(value)) {
             setHelpText("ID를 다시입력하세요");
-            setfalseV(false);
+            setfalseV(true);
             setShowPwField(false);
         } else {
             setHelpText("6-12자 이내 영문, 숫자 사용");
             setShowPwField(false);
-            setfalseV(true);
+            setfalseV(false);
         }
     };
 
@@ -73,12 +75,38 @@ export default function Sign() {
         }
     };
 
+    const handleUserNameChange = (event) => {
+        const value = event.target.value
+        if (value.length > -1) {
+            setuserNameValue(value);
+        }
+    }
+
+    const handleSubmit = (event) => {
+        console.log(falseV, pwError, pwCheckError)
+        if(!falseV && !pwError && !pwCheckError && userNameValue.length > 0 && idValue.length > 0){
+            alert("회원가입 완료")
+        } else {
+            alert("모든 입력란을 올바르게 래워주세요.")
+        }
+    }
+
     return (
         <>
             <div className={styles.wrapper}>
                 <h2 className={styles.head}>회원가입</h2>
                 <TextField
-                    error={!falseV}
+                    id="username-required"
+                    label="Username"
+                    placeholder="닉네임"
+                    helperText="사용하실 닉네임을 입력해주세요"
+                    value={userNameValue}
+                    onChange={handleUserNameChange}
+                    style={{ width: "250px" }}
+                    fullWidth
+                ></TextField>
+                <TextField
+                    error={falseV}
                     id="id-required"
                     label="ID"
                     placeholder="6-12자 이내 영문, 숫자"
@@ -114,19 +142,24 @@ export default function Sign() {
                             placeholder="password를 적으세요"
                             helperText={pwCheckHelpText}
                             style={{ width: "250px" }}
-                            InputProps={{
-                                style: { height: "54px" },
-                            }}
+                            InputProps={{style: { height: "54px" }}}
                             value={pwCheckValue}
                             onChange={handlePwCheckChange}
                             fullWidth
                         ></TextField>
                     </Fade>
                 )}
-                <div style={{ marginTop: "20px" }}>
+                <Button
+                    variant="outlined"
+                    color="primary"
+                    style={{marginTop: '20px', width: "250px"}}
+                    onClick={handleSubmit}
+                    fullWidth
+                >Continued</Button>
+                {/* <div style={{ marginTop: "20px" }}>
                     <p className={highlightInfo ? styles.highlight : ""}>학번: 2514</p>
                     <p className={highlightInfo ? styles.highlight : ""}>이름: 장병준</p>
-                </div>
+                </div> */}
             </div>
         </>
     );

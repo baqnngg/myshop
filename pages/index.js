@@ -4,7 +4,7 @@ export default function Home(){
   return(
     <>
       <Container fixed>
-        <Button variant="contained" href="/signin">회원가입</Button>
+        <Button variant="contained" href="/signup">회원가입</Button>
       </Container>
     </>
   )
